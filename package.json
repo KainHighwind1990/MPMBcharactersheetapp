@@ -1,0 +1,22 @@
+{
+  "name": "mpmb-web-sheet-prototype",
+  "private": true,
+  "version": "0.9.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:content": "node scripts/smoke-content.mjs",
+    "test:stress": "node scripts/stress-pre09.mjs",
+    "tauri": "tauri",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build",
+    "desktop:build:linux": "NO_STRIP=true tauri build",
+    "desktop:build:appimage": "NO_STRIP=true tauri build --bundles appimage"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0",
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}

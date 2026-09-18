@@ -1,0 +1,14 @@
+{
+  "name": "MPMB Web Character Sheet",
+  "version": "0.8.11",
+  "manifest_version": 1,
+  "description": "Beta browser-native D&D 5e character sheet with MPMB-compatible content loading, guided creation, combat math, spellcasting, and semantic feature behavior tracking.",
+  "icon": "/icon.svg",
+  "action": {
+    "title": "Character Sheet",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "height": 900,
+    "width": 1000
+  }
+}

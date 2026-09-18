@@ -1,0 +1,33 @@
+MPMB Character Sheet 0.9.0 packaging
+
+End-user goal
+- No npm, Node, Rust, Vite, or local server is required after packaging.
+- Linux release formats: RPM, DEB, and AppImage.
+- Windows packaging follows in the 0.9 cycle; macOS is deferred to 1.0 testing.
+
+Linux build
+1. npm install
+2. npm run desktop:build:linux
+
+The Linux build script sets NO_STRIP=true. This avoids the older strip bundled by linuxdeploy failing on modern Fedora SHT_RELR/.relr.dyn libraries while creating AppImages.
+
+To retry only AppImage:
+  npm run desktop:build:appimage
+
+Linux runtime
+- The application sets WEBKIT_DISABLE_COMPOSITING_MODE=1 before Tauri creates the WebKitGTK webview.
+- This preserves native Wayland while avoiding the repaint/freezing reproduced on Fedora KDE/Wayland.
+
+Desktop integration
+- Stable desktop identity: mpmb-character-sheet.desktop.
+- Visible application/window name remains MPMB Character Sheet.
+- Utility category is retained.
+- RPM/DEB post-install and post-remove hooks refresh the desktop and hicolor icon caches; KDE's cache is refreshed when kbuildsycoca6 is available.
+
+Development
+  npm run desktop:dev
+
+Normal production frontend
+  npm run build
+
+0.9.0 Linux packaging intentionally changes distribution/runtime integration, not D&D rules behavior.

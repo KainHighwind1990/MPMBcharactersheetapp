@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=MPMB Character Sheet
+Comment=D&D 5e character sheet with MPMB content support
+Exec={{exec}}
+Icon={{icon}}
+Terminal=false
+Categories=Utility;
+StartupWMClass=mpmb-character-sheet
+StartupNotify=true
