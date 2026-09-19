@@ -1,7 +1,7 @@
 {
   "name": "mpmb-web-sheet-prototype",
   "private": true,
-  "version": "0.9.0",
+  "version": "0.9.1-dev.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +13,8 @@
     "desktop:dev": "tauri dev",
     "desktop:build": "tauri build",
     "desktop:build:linux": "NO_STRIP=true tauri build",
-    "desktop:build:appimage": "NO_STRIP=true tauri build --bundles appimage"
+    "desktop:build:appimage": "NO_STRIP=true tauri build --bundles appimage",
+    "audit:content": "node scripts/audit-content-integrity.mjs"
   },
   "devDependencies": {
     "vite": "^7.0.0",

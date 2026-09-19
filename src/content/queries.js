@@ -65,8 +65,10 @@ export function validSubclassForClass(classKey, subclassValue) {
 }
 
 export function raceOptions() {
-  return Object.entries(registries.RaceList).map(([key,data]) => ({ key, label: data?.name || display(key), data }))
-    .sort((a,b)=>a.label.localeCompare(b.label));
+  const rows=Object.entries(registries.RaceList).map(([key,data]) => ({ key, label: data?.name || display(key), data }));
+  const counts=new Map(); for(const row of rows) counts.set(norm(row.label),(counts.get(norm(row.label))||0)+1);
+  for(const row of rows) if((counts.get(norm(row.label))||0)>1) row.label=`${row.label} (${sourceShort(row.data)})`;
+  return rows.sort((a,b)=>a.label.localeCompare(b.label));
 }
 
 export function backgroundOptions() {

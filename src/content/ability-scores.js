@@ -14,6 +14,8 @@ const abilityFromName=name=>{
 function ensure(character){
   character.contentSelections ||= {};
   character.contentSelections.featAbilityChoices ||= {};
+  character.contentSelections.racialAbilityOverrides ||= {};
+  character.contentSelections.manualAbilityAdjustments ||= {};
   character.baseAbilities ||= { ...(character.abilities||{}) };
   for(const k of ABILITY_KEYS) if(!Number.isFinite(Number(character.baseAbilities[k]))) character.baseAbilities[k]=10;
   character.abilities ||= { ...character.baseAbilities };
@@ -159,9 +161,15 @@ export function abilityScoreBreakdown(character){
   const adds=[], overrides=[], maxima=[];
   const racial=racialAbilityStatus(character);
   const raceLabel=racial.data?.name||racial.data?.sortname||'Race';
-  for(const [k,v] of Object.entries(racial.rule?.fixed||{})) if(Number(v)) adds.push({ability:k,value:Number(v),label:raceLabel,kind:'add'});
-  for(const row of racial.groups||[]){
-    row.selected.forEach(k=>{if(k) adds.push({ability:k,value:Number(row.group.amount)||0,label:raceLabel,kind:'add'});});
+  const racialTotals=Object.fromEntries(ABILITY_KEYS.map(k=>[k,0]));
+  for(const [k,v] of Object.entries(racial.rule?.fixed||{})) if(Number(v)) racialTotals[k]+=Number(v);
+  for(const row of racial.groups||[]) row.selected.forEach(k=>{if(k) racialTotals[k]+=Number(row.group.amount)||0;});
+  const racialOverrides=character.contentSelections.racialAbilityOverrides||{};
+  for(const k of ABILITY_KEYS){
+    const automatic=racialTotals[k]||0;
+    const hasOverride=Object.prototype.hasOwnProperty.call(racialOverrides,k) && Number.isFinite(Number(racialOverrides[k]));
+    const value=hasOverride?Number(racialOverrides[k]):automatic;
+    if(value) adds.push({ability:k,value,label:hasOverride?`${raceLabel} (manual racial override)`:raceLabel,kind:'add',source:'race'});
   }
 
   for(const imp of improvementSources(character)){
@@ -184,6 +192,11 @@ export function abilityScoreBreakdown(character){
     if(!chosenScores.some(Boolean)){
       const row=featAbilityByFeat.get(id); if(row?.selected) adds.push({ability:row.selected,value:row.amount,label,kind:'add'});
     }
+  }
+
+  for(const k of ABILITY_KEYS){
+    const value=Number(character.contentSelections.manualAbilityAdjustments?.[k])||0;
+    if(value) adds.push({ability:k,value,label:'Manual / Other',kind:'add',source:'manual'});
   }
 
   for(const entry of character.magicItems||[]){
@@ -216,4 +229,22 @@ export function reconcileAbilityScores(character){
   const state=abilityScoreBreakdown(character);
   character.abilities={...state.scores};
   return state;
+}
+
+
+export function racialAbilityContribution(character,ability){
+  const state=abilityScoreBreakdown(character); return state.details?.[ability]?.adds?.filter(x=>x.source==='race').reduce((n,x)=>n+Number(x.value||0),0)||0;
+}
+export function setRacialAbilityOverride(character,ability,value){
+  ensure(character); if(!ABILITY_KEYS.includes(ability)) return reconcileAbilityScores(character);
+  const store=character.contentSelections.racialAbilityOverrides;
+  if(value===null||value===undefined||value==='') delete store[ability]; else store[ability]=Number(value)||0;
+  return reconcileAbilityScores(character);
+}
+export function clearRacialAbilityOverride(character,ability){ ensure(character); delete character.contentSelections.racialAbilityOverrides[ability]; return reconcileAbilityScores(character); }
+export function setManualAbilityAdjustment(character,ability,value){
+  ensure(character); if(!ABILITY_KEYS.includes(ability)) return reconcileAbilityScores(character);
+  const store=character.contentSelections.manualAbilityAdjustments;
+  const n=Number(value)||0; if(n) store[ability]=n; else delete store[ability];
+  return reconcileAbilityScores(character);
 }

@@ -15,8 +15,8 @@ import { classStartingEquipment, backgroundStartingEquipment, categoryPicksForAl
 import { spellcastersForCharacter, createSpellWizardDraft, validSpellWizardDraft, applySpellWizard, reconcileSpellcastingState, effectiveCasterLevel, spellSlotSummary, setSpellSlotUsed, resetSpellSlots, spellcastingSummary, preparedPool, spellGrantMetadata } from "../src/content/spellcasting.js";
 import { reconcileSaveProficiencies, saveAdvantageInfo } from "../src/content/save-status.js";
 import { backgroundVariantsFor } from "../src/content/background-variants.js";
-import { racialAbilityStatus, setRacialAbilityChoice, generalProficiencyStatus, setGeneralProficiencyChoice, armorProficiencyProfile, weaponProficiencyProfile, featureChoiceSources, setFeatureChoice, setExtraFeatureChoice, improvementSources, setImprovementChoice, bonusFeatSources, setBonusFeatChoice, featEligibility, characterChoiceIssues, reconcileFeatAssignments } from "../src/content/choice-framework.js";
-import { reconcileAbilityScores, featAbilityChoiceSources, setFeatAbilityChoice, resolveMagicItemData, magicItemEnhancementProfile } from "../src/content/ability-scores.js";
+import { racialAbilityStatus, setRacialAbilityChoice, setRacialAbilityMode, generalProficiencyStatus, setGeneralProficiencyChoice, armorProficiencyProfile, weaponProficiencyProfile, featureChoiceSources, setFeatureChoice, setExtraFeatureChoice, improvementSources, setImprovementChoice, bonusFeatSources, setBonusFeatChoice, featEligibility, characterChoiceIssues, reconcileFeatAssignments } from "../src/content/choice-framework.js";
+import { reconcileAbilityScores, featAbilityChoiceSources, setFeatAbilityChoice, resolveMagicItemData, magicItemEnhancementProfile, setRacialAbilityOverride, clearRacialAbilityOverride, setManualAbilityAdjustment } from "../src/content/ability-scores.js";
 import { ORIGINAL_THEME, normalizeRgb, rgbToHex, hexToRgb, normalizeThemePrefs } from "../src/theme.js";
 import { prerequisiteResult, multiclassEligibility, classPlanIssues, levelUpPreview, applyLevelUp, creationStatus } from "../src/content/character-workflow.js";
 import { combatProfile, combatSaveBonus, derivedSpeed, initiativeSummary, armorStatus } from "../src/content/combat.js";
@@ -388,6 +388,17 @@ check("Half-feat ability choice applies its +1", halfFeatScores.abilities.str===
 
 const fixedFeatScores={...newCharacter(),classes:[{name:"fighter",level:1,subclass:""}],baseAbilities:{str:10,dex:10,con:10,int:10,wis:10,cha:15},abilities:{str:10,dex:10,con:10,int:10,wis:10,cha:15},feats:["actor"],contentSelections:{}}; reconcileAbilityScores(fixedFeatScores);
 check("Fixed half-feat scores arrays apply automatically", fixedFeatScores.abilities.cha===16, JSON.stringify(fixedFeatScores.abilities));
+const rebornScores={...newCharacter(),race:"reborn",classes:[{name:"fighter",level:1,subclass:""}],baseAbilities:{str:10,dex:10,con:10,int:10,wis:10,cha:10},abilities:{str:10,dex:10,con:10,int:10,wis:10,cha:10},contentSelections:{}};
+let rebornAbility=racialAbilityStatus(rebornScores);
+check("scoresGeneric races expose +2/+1 flexible racial choices", rebornAbility.rule.generic===true && rebornAbility.groups.length===2 && rebornAbility.missing===2, JSON.stringify(rebornAbility));
+setRacialAbilityChoice(rebornScores,0,"con"); setRacialAbilityChoice(rebornScores,1,"wis"); reconcileAbilityScores(rebornScores);
+check("Reborn flexible racial choices apply +2/+1", rebornScores.abilities.con===12 && rebornScores.abilities.wis===11, JSON.stringify(rebornScores.abilities));
+setRacialAbilityMode(rebornScores,"+1/+1/+1"); setRacialAbilityChoice(rebornScores,0,"dex"); setRacialAbilityChoice(rebornScores,1,"con"); setRacialAbilityChoice(rebornScores,2,"wis"); reconcileAbilityScores(rebornScores);
+check("scoresGeneric races support three +1 choices", rebornScores.abilities.dex===11 && rebornScores.abilities.con===11 && rebornScores.abilities.wis===11, JSON.stringify(rebornScores.abilities));
+setRacialAbilityOverride(rebornScores,"dex",2); setManualAbilityAdjustment(rebornScores,"str",1);
+check("Manual racial override and Other ability adjustment are applied", rebornScores.abilities.dex===12 && rebornScores.abilities.str===11, JSON.stringify(rebornScores.abilities));
+clearRacialAbilityOverride(rebornScores,"dex");
+check("Clearing racial override restores automatic racial choice", rebornScores.abilities.dex===11, JSON.stringify(rebornScores.abilities));
 
 const itemScores={...newCharacter(),classes:[{name:"fighter",level:1,subclass:""}],baseAbilities:{str:10,dex:10,con:10,int:10,wis:10,cha:10},abilities:{str:10,dex:10,con:10,int:10,wis:10,cha:10},magicItems:[{id:"gauntlets of ogre power",attuned:true,choice:""}],contentSelections:{}}; reconcileAbilityScores(itemScores);
 check("Attuned magic-item score override updates the derived score", itemScores.abilities.str===19, JSON.stringify(itemScores.abilities));

@@ -206,9 +206,15 @@ function racialAbilitySource(character){
   const {base,variant}=resolvedRaceParts(character); if(!base)return null;
   return variant && (own(variant,'scores')||own(variant,'scorestxt')) ? variant : base;
 }
-function parseRacialAbilityRule(data){
-  if(!data)return {fixed:fixedAbilityBonuses(data),groups:[],text:''};
+function parseRacialAbilityRule(data, genericMode='+2/+1'){
+  if(!data)return {fixed:fixedAbilityBonuses(data),groups:[],text:'',generic:false};
   const fixed=fixedAbilityBonuses(data), text=String(data.scorestxt||''); const groups=[];
+  const generic=!!data.scoresGeneric;
+  if(generic){
+    if(genericMode==='+1/+1/+1') groups.push({amount:1,count:3,options:ABILITY_KEYS.slice(),unique:true});
+    else { groups.push({amount:2,count:1,options:ABILITY_KEYS.slice(),unique:true}); groups.push({amount:1,count:1,options:ABILITY_KEYS.slice(),unique:true,excludeAcrossGroups:true}); }
+    return {fixed,groups,text:text||'Choose either +2 to one ability and +1 to another, or +1 to three different abilities.',generic:true,genericMode};
+  }
   // If a textual choice is present, the numeric scores remain the fixed portion only.
   let m=text.match(/\+(\d+)\s+to\s+(two|three|four|five|six|\d+)\s+(?:different\s+)?ability scores? of my choice/i);
   if(m){ const words={two:2,three:3,four:4,five:5,six:6}; groups.push({amount:Number(m[1]),count:Number(m[2])||words[norm(m[2])]||1,options:ABILITY_KEYS.slice(),unique:true}); }
@@ -218,20 +224,25 @@ function parseRacialAbilityRule(data){
     const or=text.match(/\+(\d+)\s+(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)(?:\s+or\s+)(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)/i);
     if(or) groups.push({amount:Number(or[1]),count:1,options:[abilityKey(or[2]),abilityKey(or[3])].filter(Boolean),unique:true});
   }
-  return {fixed,groups,text};
+  return {fixed,groups,text,generic:false};
 }
 export function racialAbilityStatus(character){
-  const data=racialAbilitySource(character); const rule=parseRacialAbilityRule(data); const s=selections(character); const selected=[]; let offset=0;
+  const data=racialAbilitySource(character); const s=selections(character);
+  if(data?.scoresGeneric && !['+2/+1','+1/+1/+1'].includes(s.racialAbilityMode)) s.racialAbilityMode='+2/+1';
+  const rule=parseRacialAbilityRule(data,s.racialAbilityMode); const selected=[]; let offset=0;
   const flat=[];
+  const usedAcross=new Set();
   for(const group of rule.groups){
     const used=new Set(); const arr=[];
-    for(let i=0;i<group.count;i++){ const v=s.racialAbilityChoices[offset+i]; if(group.options.includes(v)&&!used.has(v)){arr.push(v);used.add(v);} else arr.push(''); }
+    for(let i=0;i<group.count;i++){ const v=s.racialAbilityChoices[offset+i]; if(group.options.includes(v)&&!used.has(v)&&!(rule.generic&&usedAcross.has(v))){arr.push(v);used.add(v);usedAcross.add(v);} else arr.push(''); }
     flat.push({group,selected:arr,offset}); selected.push(...arr); offset+=group.count;
   }
   s.racialAbilityChoices=selected;
   return {data,rule,groups:flat,missing:selected.filter(x=>!x).length};
 }
 export function setRacialAbilityChoice(character,slot,value){ const s=selections(character); s.racialAbilityChoices[slot]=value; return racialAbilityStatus(character); }
+export function setRacialAbilityMode(character,mode){ const s=selections(character); s.racialAbilityMode=mode==='+1/+1/+1'?'+1/+1/+1':'+2/+1'; s.racialAbilityChoices=[]; return racialAbilityStatus(character); }
+export function clearRacialAbilityState(character){ const s=selections(character); s.racialAbilityChoices=[]; delete s.racialAbilityMode; delete s.racialAbilityOverrides; }
 
 function featureRows(character){
   const rows=[]; const selectionState=selections(character);

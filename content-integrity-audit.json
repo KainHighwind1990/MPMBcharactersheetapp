@@ -1,0 +1,1342 @@
+{
+  "generated": "2026-09-19T17:04:28.386Z",
+  "counts": {
+    "SourceList": 123,
+    "ClassList": 21,
+    "ClassSubList": 235,
+    "RaceList": 213,
+    "RaceSubList": 109,
+    "FeatsList": 211,
+    "SpellsList": 575,
+    "MagicItemsList": 833,
+    "BackgroundList": 126,
+    "BackgroundSubList": 0,
+    "BackgroundFeatureList": 117,
+    "ArmourList": 15,
+    "WeaponsList": 97,
+    "AmmoList": 23,
+    "PacksList": 8,
+    "GearList": 113,
+    "ToolsList": 37,
+    "CreatureList": 217,
+    "CompanionList": 7,
+    "FightingStyles": 12,
+    "WarlockInvocations": 61,
+    "GenericClassFeatures": 1
+  },
+  "summary": {
+    "genericAbilityRaces": 60,
+    "racesFlaggedForReview": 6,
+    "featsWithScoreText": 49,
+    "duplicateRaceNames": 41
+  },
+  "genericAbilityRaces": [
+    {
+      "id": "feral tiefling",
+      "source": "unknown"
+    },
+    {
+      "id": "dhampir",
+      "name": "Dhampir",
+      "source": "VRGtR"
+    },
+    {
+      "id": "hexblood",
+      "name": "Hexblood",
+      "source": "VRGtR"
+    },
+    {
+      "id": "reborn",
+      "name": "Reborn",
+      "source": "VRGtR"
+    },
+    {
+      "id": "fairy",
+      "name": "Fairy",
+      "source": "WBtW"
+    },
+    {
+      "id": "harengon",
+      "name": "Harengon",
+      "source": "WBtW"
+    },
+    {
+      "id": "chromatic dragonborn",
+      "name": "Chromatic Dragonborn",
+      "source": "FToD"
+    },
+    {
+      "id": "gem dragonborn",
+      "name": "Gem Dragonborn",
+      "source": "FToD"
+    },
+    {
+      "id": "metallic dragonborn",
+      "name": "Metallic Dragonborn",
+      "source": "FToD"
+    },
+    {
+      "id": "multiverse aarakocra",
+      "name": "Multiverse Aarakocra",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse aasimar",
+      "name": "Multiverse Aasimar",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse bugbear",
+      "name": "Multiverse Bugbear",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse centaur",
+      "name": "Multiverse Centaur",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse changeling",
+      "name": "Multiverse Changeling",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse deep gnome",
+      "name": "Multiverse Svirfneblin",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse duergar",
+      "name": "Multiverse Duergar",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse eladrin",
+      "name": "Multiverse Eladrin",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse firbolg",
+      "name": "Multiverse Firbolg",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse air genasi",
+      "name": "Multiverse Air Genasi",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse earth genasi",
+      "name": "Multiverse Earth Genasi",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse fire genasi",
+      "name": "Multiverse Fire Genasi",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse water genasi",
+      "name": "Multiverse Water Genasi",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse githyanki",
+      "name": "Multiverse Githyanki",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse githzerai",
+      "name": "Multiverse Githzerai",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse goblin",
+      "name": "Multiverse Goblin",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse goliath",
+      "name": "Multiverse Goliath",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse hobgoblin",
+      "name": "Multiverse Hobgoblin",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse kenku",
+      "name": "Multiverse Kenku",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse kobold",
+      "name": "Multiverse Kobold",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse lizardfolk",
+      "name": "Multiverse Lizardfolk",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse minotaur",
+      "name": "Multiverse Minotaur",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse orc",
+      "name": "Multiverse Orc",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse satyr",
+      "name": "Multiverse Satyr",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse sea elf",
+      "name": "Multiverse Sea Elf",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse shadar-kai",
+      "name": "Multiverse Shadar-kai",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse beasthide shifter",
+      "name": "Multiverse Beasthide Shifter",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse longtooth shifter",
+      "name": "Multiverse Longtooth Shifter",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse swiftstride shifter",
+      "name": "Multiverse Swiftstride Shifter",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse wildhunt shifter",
+      "name": "Multiverse Wildhunt Shifter",
+      "source": "MotM"
+    },
+    {
+      "id": "tabaxi-motm",
+      "name": "Tabaxi",
+      "source": "MotM"
+    },
+    {
+      "id": "tortle-motm",
+      "name": "Tortle",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse triton",
+      "name": "Multiverse Triton",
+      "source": "MotM"
+    },
+    {
+      "id": "multiverse yuan-ti",
+      "name": "Multiverse Yuan-Ti",
+      "source": "MotM"
+    },
+    {
+      "id": "astral elf",
+      "name": "Astral elf",
+      "source": "S:AiS"
+    },
+    {
+      "id": "autognome",
+      "name": "Autognome",
+      "source": "S:AiS"
+    },
+    {
+      "id": "giff",
+      "name": "Giff",
+      "source": "S:AiS"
+    },
+    {
+      "id": "hadozee",
+      "name": "Hadozee",
+      "source": "S:AiS"
+    },
+    {
+      "id": "plasmoid",
+      "name": "Plasmoid",
+      "source": "S:AiS"
+    },
+    {
+      "id": "thri-kreen",
+      "name": "Thri-kreen",
+      "source": "S:AiS"
+    },
+    {
+      "id": "kender",
+      "name": "Kender",
+      "source": "D:SotDQ"
+    },
+    {
+      "id": "reborn-ua",
+      "name": "Reborn",
+      "source": "UA:GL"
+    },
+    {
+      "id": "astral elf-ua",
+      "name": "Astral elf",
+      "source": "UA:TotM"
+    },
+    {
+      "id": "autognome-ua",
+      "name": "Autognome",
+      "source": "UA:TotM"
+    },
+    {
+      "id": "giff-ua",
+      "name": "Giff",
+      "source": "UA:TotM"
+    },
+    {
+      "id": "hadozee-ua",
+      "name": "Hadozee",
+      "source": "UA:TotM"
+    },
+    {
+      "id": "plasmoid-ua",
+      "name": "Plasmoid",
+      "source": "UA:TotM"
+    },
+    {
+      "id": "thri-kreen-ua",
+      "name": "Thri-kreen",
+      "source": "UA:TotM"
+    },
+    {
+      "id": "kender-ua",
+      "name": "Kender",
+      "source": "UA:HoK"
+    },
+    {
+      "id": "kender-ua2",
+      "name": "Kender",
+      "source": "UA:HoKR"
+    },
+    {
+      "id": "glitchling-ua",
+      "name": "Glitchling",
+      "source": "UA:WotM"
+    }
+  ],
+  "racesFlaggedForReview": [
+    {
+      "id": "lycanthrope-werebear",
+      "name": "Werebear",
+      "source": "MM",
+      "ability": false,
+      "present": [
+        "speed",
+        "features",
+        "trait"
+      ]
+    },
+    {
+      "id": "lycanthrope-wereboar",
+      "name": "Wereboar",
+      "source": "MM",
+      "ability": false,
+      "present": [
+        "speed",
+        "features",
+        "trait"
+      ]
+    },
+    {
+      "id": "lycanthrope-wererat",
+      "name": "Wererat",
+      "source": "MM",
+      "ability": false,
+      "present": [
+        "speed",
+        "features",
+        "trait"
+      ]
+    },
+    {
+      "id": "lycanthrope-weretiger",
+      "name": "Weretiger",
+      "source": "MM",
+      "ability": false,
+      "present": [
+        "speed",
+        "features",
+        "trait"
+      ]
+    },
+    {
+      "id": "lycanthrope-werewolf",
+      "name": "Werewolf",
+      "source": "MM",
+      "ability": false,
+      "present": [
+        "speed",
+        "features",
+        "trait"
+      ]
+    },
+    {
+      "id": "hadozee-ua",
+      "name": "Hadozee",
+      "source": "UA:TotM",
+      "ability": true,
+      "present": [
+        "scoresGeneric",
+        "speed",
+        "trait"
+      ]
+    }
+  ],
+  "featsWithScoreText": [
+    {
+      "id": "athlete",
+      "name": "Athlete",
+      "source": "PHB",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "lightly armored",
+      "name": "Lightly Armored",
+      "source": "PHB",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "moderately armored",
+      "name": "Moderately Armored",
+      "source": "PHB",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "observant",
+      "name": "Observant",
+      "source": "PHB",
+      "scorestxt": "+1 Intelligence or Wisdom",
+      "scores": null
+    },
+    {
+      "id": "tavern brawler",
+      "name": "Tavern Brawler",
+      "source": "PHB",
+      "scorestxt": "+1 Strength or Constitution",
+      "scores": null
+    },
+    {
+      "id": "weapon master",
+      "name": "Weapon Master",
+      "source": "PHB",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "dragon fear",
+      "name": "Dragon Fear",
+      "source": "XGtE",
+      "scorestxt": "+1 Strength, Constitution, or Charisma",
+      "scores": null
+    },
+    {
+      "id": "dragon hide",
+      "name": "Dragon Hide",
+      "source": "XGtE",
+      "scorestxt": "+1 Strength, Constitution, or Charisma",
+      "scores": null
+    },
+    {
+      "id": "elven accuracy",
+      "name": "Elven Accuracy",
+      "source": "XGtE",
+      "scorestxt": "+1 Dexterity, Intelligence, Wisdom, or Charisma",
+      "scores": null
+    },
+    {
+      "id": "fade away",
+      "name": "Fade Away",
+      "source": "XGtE",
+      "scorestxt": "+1 Dexterity or Intelligence",
+      "scores": null
+    },
+    {
+      "id": "fey teleportation",
+      "name": "Fey Teleportation",
+      "source": "XGtE",
+      "scorestxt": "+1 Intelligence or Charisma",
+      "scores": null
+    },
+    {
+      "id": "flames of phlegethos",
+      "name": "Flames of Phlegethos",
+      "source": "XGtE",
+      "scorestxt": "+1 Intelligence or Charisma",
+      "scores": null
+    },
+    {
+      "id": "orcish fury",
+      "name": "Orcish Fury",
+      "source": "XGtE",
+      "scorestxt": "+1 Strength or Constitution",
+      "scores": null
+    },
+    {
+      "id": "second chance",
+      "name": "Second Chance",
+      "source": "XGtE",
+      "scorestxt": "+1 Dexterity, Constitution, or Charisma",
+      "scores": null
+    },
+    {
+      "id": "squat nimbleness",
+      "name": "Squat Nimbleness",
+      "source": "XGtE",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "revenant blade",
+      "name": "Revenant Blade",
+      "source": "E:RLW",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "chef",
+      "name": "Chef",
+      "source": "TCoE",
+      "scorestxt": "+1 Constitution or Wisdom",
+      "scores": null
+    },
+    {
+      "id": "crusher",
+      "name": "Crusher",
+      "source": "TCoE",
+      "scorestxt": "+1 Strength or Constitution",
+      "scores": null
+    },
+    {
+      "id": "piercer",
+      "name": "Piercer",
+      "source": "TCoE",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "skill expert",
+      "name": "Skill Expert",
+      "source": "TCoE",
+      "scorestxt": "+1 to one ability score of my choice",
+      "scores": null
+    },
+    {
+      "id": "slasher",
+      "name": "Slasher",
+      "source": "TCoE",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "agent of order",
+      "name": "Agent of Order",
+      "source": "P:AitM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "baleful scion",
+      "name": "Baleful Scion",
+      "source": "P:AitM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "cohort of chaos",
+      "name": "Cohort of Chaos",
+      "source": "P:AitM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "outlands envoy",
+      "name": "Outlands Envoy",
+      "source": "P:AitM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "righteous heritor",
+      "name": "Righteous Heritor",
+      "source": "P:AitM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "dragon fear-ua",
+      "name": "Dragon Fear",
+      "source": "UA:FR",
+      "scorestxt": "+1 Strength or Charisma",
+      "scores": null
+    },
+    {
+      "id": "dragon hide-ua",
+      "name": "Dragon Hide",
+      "source": "UA:FR",
+      "scorestxt": "+1 Strength or Charisma",
+      "scores": null
+    },
+    {
+      "id": "flames of phlegethos-ua",
+      "name": "Flames of Phlegethos",
+      "source": "UA:FR",
+      "scorestxt": "+1 Intelligence or Charisma",
+      "scores": null
+    },
+    {
+      "id": "grudge-bearer-ua",
+      "name": "Grudge-Bearer",
+      "source": "UA:FR",
+      "scorestxt": "+1 Strength, Constitution, or Wisdom",
+      "scores": null
+    },
+    {
+      "id": "human determination-ua",
+      "name": "Human Determination",
+      "source": "UA:FR",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "orcish fury-ua",
+      "name": "Orcish Fury",
+      "source": "UA:FR",
+      "scorestxt": "+1 Strength or Constitution",
+      "scores": null
+    },
+    {
+      "id": "prodigy-ua",
+      "name": "Prodigy",
+      "source": "UA:FR",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "second chance-ua",
+      "name": "Second Chance",
+      "source": "UA:FR",
+      "scorestxt": "+1 Dexterity, Constitution, or Charisma",
+      "scores": null
+    },
+    {
+      "id": "squat nimbleness-ua",
+      "name": "Squat Nimbleness",
+      "source": "UA:FR",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "wonder maker-ua",
+      "name": "Wonder Maker",
+      "source": "UA:FR",
+      "scorestxt": "+1 Dexterity or Intelligence",
+      "scores": null
+    },
+    {
+      "id": "crusher-ua",
+      "name": "Crusher",
+      "source": "UA:F2",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "practiced expert-ua",
+      "name": "Practiced Expert",
+      "source": "UA:F2",
+      "scorestxt": "+1 to one ability score of my choice",
+      "scores": null
+    },
+    {
+      "id": "shield training-ua",
+      "name": "Shield Training",
+      "source": "UA:F2",
+      "scorestxt": "+1 Strength, Dexterity, or Constitution",
+      "scores": null
+    },
+    {
+      "id": "knight of the crown-ua",
+      "name": "Knight of the Crown",
+      "source": "UA:HoK",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "knight of the rose-ua",
+      "name": "Knight of the Rose",
+      "source": "UA:HoK",
+      "scorestxt": "+1 Constitution or Charisma",
+      "scores": null
+    },
+    {
+      "id": "knight of the crown-ua2",
+      "name": "Knight of the Crown",
+      "source": "UA:HoKR",
+      "scorestxt": "+1 Strength or Dexterity",
+      "scores": null
+    },
+    {
+      "id": "knight of the sword-ua2",
+      "name": "Knight of the Sword",
+      "source": "UA:HoKR",
+      "scorestxt": "+1 Intelligence, Wisdom, or Charisma",
+      "scores": null
+    },
+    {
+      "id": "knight of the rose-ua2",
+      "name": "Knight of the Rose",
+      "source": "UA:HoKR",
+      "scorestxt": "+1 Constitution or Charisma",
+      "scores": null
+    },
+    {
+      "id": "baleful scion-ua",
+      "name": "Baleful Scion",
+      "source": "UA:WotM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "cohort of chaos-ua",
+      "name": "Cohort of Chaos",
+      "source": "UA:WotM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "outlands envoy-ua",
+      "name": "Outlands Envoy",
+      "source": "UA:WotM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "righteous heritor-ua",
+      "name": "Righteous Heritor",
+      "source": "UA:WotM",
+      "scorestxt": "+1 to one ability score of your choice",
+      "scores": null
+    },
+    {
+      "id": "guile of the cloud giant-ua2",
+      "name": "Guile of the Cloud Giant",
+      "source": "UA:WotM",
+      "scorestxt": "+1 Dexterity, Constitution, or Charisma",
+      "scores": null
+    }
+  ],
+  "duplicateRaceNames": [
+    {
+      "name": "eladrin",
+      "rows": [
+        {
+          "id": "eladrin",
+          "source": "DMG"
+        },
+        {
+          "id": "eladrin-mtof",
+          "source": "MToF"
+        },
+        {
+          "id": "eladrin-uaeng",
+          "source": "UA:EnG"
+        }
+      ]
+    },
+    {
+      "name": "tabaxi",
+      "rows": [
+        {
+          "id": "tabaxi",
+          "source": "VGtM"
+        },
+        {
+          "id": "tabaxi-motm",
+          "source": "MotM"
+        }
+      ]
+    },
+    {
+      "name": "tortle",
+      "rows": [
+        {
+          "id": "tortle",
+          "source": "TP"
+        },
+        {
+          "id": "tortle-motm",
+          "source": "MotM"
+        }
+      ]
+    },
+    {
+      "name": "dispater tiefling",
+      "rows": [
+        {
+          "id": "dispater tiefling",
+          "source": "MToF"
+        },
+        {
+          "id": "dispater tiefling-ua",
+          "source": "UA:FO"
+        }
+      ]
+    },
+    {
+      "name": "mephistopheles tiefling",
+      "rows": [
+        {
+          "id": "mephistopheles tiefling",
+          "source": "MToF"
+        },
+        {
+          "id": "mephistopheles tiefling-ua",
+          "source": "UA:FO"
+        }
+      ]
+    },
+    {
+      "name": "shadar-kai",
+      "rows": [
+        {
+          "id": "shadar-kai elf",
+          "source": "MToF"
+        },
+        {
+          "id": "shadar-kai elf-ua",
+          "source": "UA:ES"
+        }
+      ]
+    },
+    {
+      "name": "githyanki",
+      "rows": [
+        {
+          "id": "githyanki-mtof",
+          "source": "MToF"
+        },
+        {
+          "id": "githyanki-ua",
+          "source": "UA:EnG"
+        }
+      ]
+    },
+    {
+      "name": "githzerai",
+      "rows": [
+        {
+          "id": "githzerai-mtof",
+          "source": "MToF"
+        },
+        {
+          "id": "githzerai-ua",
+          "source": "UA:EnG"
+        }
+      ]
+    },
+    {
+      "name": "centaur",
+      "rows": [
+        {
+          "id": "centaur",
+          "source": "GGtR"
+        },
+        {
+          "id": "centaur-ua",
+          "source": "UA:CnM"
+        }
+      ]
+    },
+    {
+      "name": "loxodon",
+      "rows": [
+        {
+          "id": "loxodon",
+          "source": "GGtR"
+        },
+        {
+          "id": "loxodon-ua",
+          "source": "UA:RoR"
+        }
+      ]
+    },
+    {
+      "name": "minotaur",
+      "rows": [
+        {
+          "id": "minotaur",
+          "source": "GGtR"
+        },
+        {
+          "id": "minotaur-ua",
+          "source": "UA:WA"
+        },
+        {
+          "id": "minotaur-uacnm",
+          "source": "UA:CnM"
+        }
+      ]
+    },
+    {
+      "name": "simic hybrid",
+      "rows": [
+        {
+          "id": "simic hybrid",
+          "source": "GGtR"
+        },
+        {
+          "id": "simic hybrid-ua",
+          "source": "UA:RoR"
+        }
+      ]
+    },
+    {
+      "name": "vedalken",
+      "rows": [
+        {
+          "id": "vedalken",
+          "source": "GGtR"
+        },
+        {
+          "id": "vedalken-ua",
+          "source": "UA:RoR"
+        }
+      ]
+    },
+    {
+      "name": "changeling",
+      "rows": [
+        {
+          "id": "changeling",
+          "source": "E:RLW"
+        },
+        {
+          "id": "changeling-ua",
+          "source": "UA:E"
+        },
+        {
+          "id": "changeling-ua2",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "kalashtar",
+      "rows": [
+        {
+          "id": "kalashtar",
+          "source": "E:RLW"
+        },
+        {
+          "id": "kalashtar-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "beasthide shifter",
+      "rows": [
+        {
+          "id": "beasthide shifter",
+          "source": "E:RLW"
+        },
+        {
+          "id": "beasthide shifter-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "longtooth shifter",
+      "rows": [
+        {
+          "id": "longtooth shifter",
+          "source": "E:RLW"
+        },
+        {
+          "id": "longtooth shifter-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "swiftstride shifter",
+      "rows": [
+        {
+          "id": "swiftstride shifter",
+          "source": "E:RLW"
+        },
+        {
+          "id": "swiftstride shifter-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "wildhunt shifter",
+      "rows": [
+        {
+          "id": "wildhunt shifter",
+          "source": "E:RLW"
+        },
+        {
+          "id": "wildhunt shifter-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "warforged",
+      "rows": [
+        {
+          "id": "warforged",
+          "source": "E:RLW"
+        },
+        {
+          "id": "warforged-ua",
+          "source": "UA:E"
+        }
+      ]
+    },
+    {
+      "name": "half-elf (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark detection half-elf",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark storm half-elf",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark detection half-elf-ua",
+          "source": "WGtE"
+        },
+        {
+          "id": "dragonmark storm half-elf-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "half-orc (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark finding half-orc",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark finding half-orc-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "human (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark finding human",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark handling human",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark making human",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark passage human",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark sentinel human",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark handling human-ua",
+          "source": "WGtE"
+        },
+        {
+          "id": "dragonmark making human-ua",
+          "source": "WGtE"
+        },
+        {
+          "id": "dragonmark passage human-ua",
+          "source": "UA:D"
+        },
+        {
+          "id": "dragonmark sentinel human-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "halfling (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark healing halfling",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark hospitality halfling",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark healing halfling-ua",
+          "source": "WGtE"
+        },
+        {
+          "id": "dragonmark hospitality halfling-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "gnome (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark scribing gnome",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark scribing gnome-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "elf (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark shadow elf",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark shadow elf-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "dwarf (dragonmark)",
+      "rows": [
+        {
+          "id": "dragonmark warding dwarf",
+          "source": "E:RLW"
+        },
+        {
+          "id": "dragonmark warding dwarf-ua",
+          "source": "WGtE"
+        }
+      ]
+    },
+    {
+      "name": "dhampir",
+      "rows": [
+        {
+          "id": "dhampir",
+          "source": "VRGtR"
+        },
+        {
+          "id": "dhampir-ua",
+          "source": "UA:GL"
+        }
+      ]
+    },
+    {
+      "name": "hexblood",
+      "rows": [
+        {
+          "id": "hexblood",
+          "source": "VRGtR"
+        },
+        {
+          "id": "hexblood-ua",
+          "source": "UA:GL"
+        }
+      ]
+    },
+    {
+      "name": "reborn",
+      "rows": [
+        {
+          "id": "reborn",
+          "source": "VRGtR"
+        },
+        {
+          "id": "reborn-ua",
+          "source": "UA:GL"
+        }
+      ]
+    },
+    {
+      "name": "fairy",
+      "rows": [
+        {
+          "id": "fairy",
+          "source": "WBtW"
+        },
+        {
+          "id": "fairy-ua",
+          "source": "UA:FotF"
+        }
+      ]
+    },
+    {
+      "name": "chromatic dragonborn",
+      "rows": [
+        {
+          "id": "chromatic dragonborn",
+          "source": "FToD"
+        },
+        {
+          "id": "chromatic dragonborn-ua",
+          "source": "UA:DO"
+        }
+      ]
+    },
+    {
+      "name": "gem dragonborn",
+      "rows": [
+        {
+          "id": "gem dragonborn",
+          "source": "FToD"
+        },
+        {
+          "id": "gem dragonborn-ua",
+          "source": "UA:DO"
+        }
+      ]
+    },
+    {
+      "name": "metallic dragonborn",
+      "rows": [
+        {
+          "id": "metallic dragonborn",
+          "source": "FToD"
+        },
+        {
+          "id": "metallic dragonborn-ua",
+          "source": "UA:DO"
+        }
+      ]
+    },
+    {
+      "name": "astral elf",
+      "rows": [
+        {
+          "id": "astral elf",
+          "source": "S:AiS"
+        },
+        {
+          "id": "astral elf-ua",
+          "source": "UA:TotM"
+        }
+      ]
+    },
+    {
+      "name": "autognome",
+      "rows": [
+        {
+          "id": "autognome",
+          "source": "S:AiS"
+        },
+        {
+          "id": "autognome-ua",
+          "source": "UA:TotM"
+        }
+      ]
+    },
+    {
+      "name": "giff",
+      "rows": [
+        {
+          "id": "giff",
+          "source": "S:AiS"
+        },
+        {
+          "id": "giff-ua",
+          "source": "UA:TotM"
+        }
+      ]
+    },
+    {
+      "name": "hadozee",
+      "rows": [
+        {
+          "id": "hadozee",
+          "source": "S:AiS"
+        },
+        {
+          "id": "hadozee-ua",
+          "source": "UA:TotM"
+        }
+      ]
+    },
+    {
+      "name": "plasmoid",
+      "rows": [
+        {
+          "id": "plasmoid",
+          "source": "S:AiS"
+        },
+        {
+          "id": "plasmoid-ua",
+          "source": "UA:TotM"
+        }
+      ]
+    },
+    {
+      "name": "thri-kreen",
+      "rows": [
+        {
+          "id": "thri-kreen",
+          "source": "S:AiS"
+        },
+        {
+          "id": "thri-kreen-ua",
+          "source": "UA:TotM"
+        }
+      ]
+    },
+    {
+      "name": "kender",
+      "rows": [
+        {
+          "id": "kender",
+          "source": "D:SotDQ"
+        },
+        {
+          "id": "kender-ua",
+          "source": "UA:HoK"
+        },
+        {
+          "id": "kender-ua2",
+          "source": "UA:HoKR"
+        }
+      ]
+    }
+  ]
+}
