@@ -1,4 +1,4 @@
-export const APP_VERSION = "0.9.1-dev.1";
+export const APP_VERSION = "0.9.2-test.1";
 export const APP_STAGE = "Beta";
 
 export const coreClassNames = [

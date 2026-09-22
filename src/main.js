@@ -175,6 +175,8 @@ function render() {
       <button data-act="load-mpmb">Import Additional MPMB JS</button>
       <button data-act="report" ${lastImport ? "" : "disabled"}>Export Last Import Report</button>
       <button data-act="export">Export Character</button>
+      <button data-act="tester-report" title="Export app/version, diagnostics, content counts, and this character for a bug report">Tester Report</button>
+      <button data-act="print" title="Open the system print dialog with a clean printable character-sheet layout">Print Sheet</button>
       <button data-act="import">Import Character</button>
       <button data-act="theme" title="Change page, panel, or individual section colors. Color settings are saved only in this browser.">Colors</button>
       <span class="toolbar-divider" aria-hidden="true"></span>
@@ -1071,6 +1073,8 @@ app.addEventListener("click", e => {
   if(act==="load-mpmb") mpmbInput.click();
   if(act==="report"&&lastImport) exportImportReport();
   if(act==="export") exportCharacter();
+  if(act==="tester-report"){ exportTesterReport(); return; }
+  if(act==="print"){ window.print(); return; }
   if(act==="import") charInput.click();
   if(act==="jump-choices"){ focusPanel("choices"); return; }
   if(act==="theme"){ openThemeDialog(); return; }
@@ -1168,6 +1172,19 @@ spellDialog.addEventListener("close",()=>{
 mpmbInput.addEventListener("change", async()=>{ const file=mpmbInput.files?.[0]; if(!file)return; lastImport=importAdditionalContent(await file.text(),file.name); render(); mpmbInput.value=""; });
 charInput.addEventListener("change", async()=>{ const file=charInput.files?.[0]; if(!file)return; try{character=ensureSheetSections(normalizeCharacter(JSON.parse(await file.text())));saveCharacter(character);}catch(e){alert(`Could not import character: ${e.message}`);}render();charInput.value=""; });
 function exportImportReport(){ if(!lastImport)return; downloadText(`${lastImport.filename}.mpmb-web-report.txt`,importReportText(lastImport),"text/plain"); }
+function exportTesterReport(){
+  const report={
+    generatedAt:new Date().toISOString(),
+    app:{version:APP_VERSION,stage:APP_STAGE,online:navigator.onLine,userAgent:navigator.userAgent,viewport:{width:window.innerWidth,height:window.innerHeight,pixelRatio:window.devicePixelRatio||1}},
+    content:{registryCounts:registryCounts(),builtInOk:!!builtInImport?.ok,baseOk:!!builtInImport?.baseReport?.ok},
+    character:{name:character.name||"",level:totalLevel(character),race:character.race||"",raceVariant:character.raceVariant||"",background:character.background||"",classes:character.classes||[]},
+    creationIssues:characterIssues(),
+    behaviorDiagnostics:behaviorDiagnostics(character),
+    fullCharacter:character
+  };
+  const base=String(character.name||"character").trim().replace(/[\\/:*?"<>|]+/g,"-")||"character";
+  downloadText(`${base}.tester-report.json`,JSON.stringify(report,null,2),"application/json");
+}
 function exportCharacter(){
   const base = String(character.name || "character").trim().replace(/[\\/:*?"<>|]+/g, "-") || "character";
   const suggested = `${base}.character.json`;
@@ -1179,6 +1196,12 @@ function exportCharacter(){
   downloadText(filename,JSON.stringify(character,null,2),"application/json");
 }
 function downloadText(name,text,type){ const blob=new Blob([text],{type});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000); }
+
+// Browser/PWA builds can work offline after the first successful load. Tauri desktop/mobile
+// bundles do not depend on this, but using the same frontend keeps behavior consistent.
+if ("serviceWorker" in navigator && !location.protocol.startsWith("tauri")) {
+  window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));
+}
 
 // First-class baseline saves should be deterministic and source-driven.
 if (!character.saveProficiencies?.length) { updatePrimaryClassSaves(); }
