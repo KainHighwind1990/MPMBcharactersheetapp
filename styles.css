@@ -551,11 +551,6 @@ select option:disabled{color:GrayText}
   .sheet{grid-template-columns:repeat(12,minmax(0,1fr))!important}
 }
 
-  .panel[data-panel-id="identity"], .panel[data-panel-id="spells"],
-  .panel[data-panel-id="notes"], .panel[data-panel-id="features"],
-  .panel[data-panel-id="equipment"] { grid-column: 1 / -1 !important; }
-}
-
 /* 0.9.2 tester/mobile-readiness pass */
 html{-webkit-text-size-adjust:100%}
 body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom)}
